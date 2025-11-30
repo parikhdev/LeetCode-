@@ -9,4 +9,4 @@ def twoSum(nums, target):
         if y in seen and seen[y] != i:
             return [i, seen[y]]
 
-print(twoSum([2,7,11,15], 18))
+print(twoSum([2,7,1,8], 9))
