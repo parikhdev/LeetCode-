@@ -1,19 +1,17 @@
 def maxArea(height):
     n = len(height)
-    l = 0
-    r = n - 1
     max_area = 0
-
-    while l < r:
-        w = r - l
-        h = min(height[l], height[r])
-        a = w * h
-        max_area = max(max_area, a)
-        
-        if height[l] < height[r]:
-            l += 1
+    left = 0
+    right = n-1
+    for i in range(n):
+        if (height[left] < height[right]):
+            area = min(height[left],height[right]) * (right - left)
+            left += 1
         else:
-            r -= 1
+            area = min(height[left],height[right]) * (right - left)
+            right -= 1
+        max_area = max(max_area, area)
     return max_area
+
 
 print(maxArea([1,8,6,2,5,4,8,3,7]))   
