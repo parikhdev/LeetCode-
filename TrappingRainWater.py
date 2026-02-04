@@ -1,22 +1,21 @@
 def trap(height):
-    l_wall = r_wall = 0
     n = len(height)
-    max_left = [0] * n
-    max_right = [0] * n
-
-    for i in range(n):
-        j = -i - 1
-        max_left[i] = l_wall
-        max_right[j] = r_wall
-        l_wall = max(l_wall, height[i])
-        r_wall = max(r_wall, height[j])
-
-    summ = 0
-    for i in range(n):
-        pot = min(max_left[i], max_right[i])
-        summ += max(0, pot - height[i])
-
-    return summ
-
+    left, right = 0, n-1
+    left_Max = right_Max = 0
+    water = 0
+    while left < right:
+        if height[left] < height[right]:
+            if height[left] >= left_Max:
+                left_Max = height[left]
+            else:
+                water += left_Max - height[left]
+            left += 1
+        else:
+            if height[right] >= right_Max:
+                right_Max = height[right]
+            else:
+                water += right_Max - height[right]
+            right -= 1
+    return water
+print(trap([0,1,0,2,1,0,1,3,2,1,2,1]))
 print(trap([4,2,0,3,2,5]))
-    
