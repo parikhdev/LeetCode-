@@ -1,7 +1,6 @@
 def countSubmatrices(grid,k):
     rows = len(grid)
-    cols = len(grid[0])
-    max_c = cols
+    max_c = len(grid[0])
     count = 0
     for r in range(rows):
         for c in range(max_c):
