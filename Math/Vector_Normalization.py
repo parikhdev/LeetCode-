@@ -8,8 +8,10 @@ def normalize_vector(v):
     if magnitude == 0:
         return v
     
-    normalized_vec = [x/magnitude for x in v]
+    normalized_vec = [round(x/magnitude, 2) for x in v]
     return normalized_vec
 
 print(normalize_vector([3,4])) # 2d vector 
+print(normalize_vector([312,480]))
+print(normalize_vector([3000,40000])) 
 

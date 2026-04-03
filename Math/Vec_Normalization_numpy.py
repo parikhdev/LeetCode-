@@ -7,7 +7,9 @@ def Normalized_vec(v):
 
     if magnitude == 0:
         return v
-    
+    # Norm_vec = np.round(vector_array/magnitude, 2)
     Norm_vec = vector_array/magnitude
     return Norm_vec
 print(Normalized_vec([3,4]))
+print(Normalized_vec([312,480]))
+print(Normalized_vec([3000,40000]))
