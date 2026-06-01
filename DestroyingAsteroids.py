@@ -1,0 +1,11 @@
+def asteroidsDestroyed(mass, asteroids): 
+    asteroids.sort()
+    
+    for asteroid in asteroids:
+        if mass < asteroid:
+            return False
+        mass += asteroid
+        
+    return True
+
+print(asteroidsDestroyed(10,[3,9,19,5,21]))
