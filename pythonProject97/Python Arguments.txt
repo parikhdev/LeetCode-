@@ -1,0 +1,98 @@
+🔹 Types of Arguments in Python Functions
+1. Positional Arguments
+
+The most common type.
+
+Values are assigned to parameters in the order they appear.
+
+def greet(name, age):
+    print(f"Hello {name}, you are {age} years old")
+
+greet("Ishan", 25)   # Positional → name="Ishan", age=25
+
+
+👉 If order is wrong, you get unexpected results or errors.
+
+2. Keyword Arguments
+
+Specify parameters explicitly using key=value.
+
+Order doesn’t matter.
+
+greet(age=25, name="Ishan")   # Keyword → works fine
+
+3. Default Arguments
+
+Assign default values to parameters.
+
+If not provided during call → default is used.
+
+def greet(name, age=18):
+    print(f"Hello {name}, you are {age} years old")
+
+greet("Ishan")         # age defaults to 18
+greet("Ishan", 25)     # overrides default
+
+4. Variable-Length Arguments
+
+Sometimes you don’t know how many arguments will be passed. Python supports two ways:
+
+(a) *args → Non-Keyword (Tuple)
+
+Collects extra positional arguments into a tuple.
+
+def add_numbers(*args):
+    print(args, type(args))
+    print("Sum =", sum(args))
+
+add_numbers(2, 3, 5, 7)   # args = (2,3,5,7)
+
+(b) **kwargs → Keyword (Dictionary)
+
+Collects extra keyword arguments into a dictionary.
+
+def display_info(**kwargs):
+    print(kwargs, type(kwargs))
+    for key, value in kwargs.items():
+        print(f"{key} = {value}")
+
+display_info(name="Ishan", age=25, city="Delhi")
+
+5. Positional-Only Arguments (Python 3.8+)
+
+Defined using / in the parameter list.
+
+Must be passed only by position, not by keyword.
+
+def f(a, b, /, c, d):
+    print(a, b, c, d)
+
+f(1, 2, c=3, d=4)   # ✅ valid
+f(a=1, b=2, c=3, d=4) # ❌ error (a,b must be positional)
+
+6. Keyword-Only Arguments
+
+Defined using * in the parameter list.
+
+Must be passed only by keyword, not by position.
+
+def f(a, *, b, c):
+    print(a, b, c)
+
+f(1, b=2, c=3)   # ✅ valid
+f(1, 2, 3)       # ❌ error (b,c must be keyword)
+
+7. Arbitrary Combinations
+
+Python allows mixing all argument types, but order must be:
+
+positional → *args → keyword-only → **kwargs
+
+
+Example:
+
+def demo(a, b=2, *args, c, d=5, **kwargs):
+    print(a, b, args, c, d, kwargs)
+
+demo(10, 20, 30, 40, c=50, e=60, f=70)
+# a=10, b=20
